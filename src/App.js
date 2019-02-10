@@ -16,6 +16,7 @@ class App extends Component {
       })
     
       peer.on('signal', function (data) {
+        console.log(data)
         document.getElementById('yourId').value = JSON.stringify(data)
       })
     
