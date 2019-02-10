@@ -5,7 +5,7 @@ var getUserMedia = require('getusermedia')
 class App extends Component {
 
   componentDidMount () {
-    getUserMedia({ video: true, audio: false }, function (err, stream) {
+    getUserMedia({ video: true, audio: true }, function (err, stream) {
       if (err) return console.error(err)
     
       var Peer = require('simple-peer')
@@ -16,7 +16,7 @@ class App extends Component {
       })
     
       peer.on('signal', function (data) {
-        console.log(data)
+        console.log("SIGNALS -------------> ",data)
         document.getElementById('yourId').value = JSON.stringify(data)
       })
     
@@ -31,15 +31,18 @@ class App extends Component {
       })
     
       peer.on('data', function (data) {
+        console.log("PEER DATA ----->", data)
         document.getElementById('messages').textContent += data + '\n'
       })
     
       peer.on('stream', function (stream) {
         var video = document.createElement('video')
         document.body.appendChild(video)
-    
-        video.src = window.URL.createObjectURL(stream)
-        video.play()
+
+        console.log("STEAMINGG: -----> ", stream)
+
+        // video.src = window.URL.createObjectURL(stream)
+        // video.play()
       })
     })
     
