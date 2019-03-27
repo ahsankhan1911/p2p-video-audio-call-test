@@ -4,5 +4,5 @@ To run the app successfully you need to enable `chrome://flags/#unsafely-treat-i
 
 Becasue chrome no more support insecure origin for power features. 
 
-# Note: 
+### Note: 
 Make sure you disable the flag after testing your app
