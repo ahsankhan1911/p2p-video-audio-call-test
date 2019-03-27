@@ -7,7 +7,7 @@ class App extends Component {
   componentDidMount () {
     getUserMedia({ video: true, audio: true }, function (err, stream) {
       if (err) return console.error(err)
-    
+    console.log("User media stream >>" , stream)
       var Peer = require('simple-peer')
       var peer = new Peer({
         initiator: window.location.hash === '#init',
@@ -40,9 +40,8 @@ class App extends Component {
         document.body.appendChild(video)
 
         console.log("STEAMINGG: -----> ", stream)
-
-        // video.src = window.URL.createObjectURL(stream)
-        // video.play()
+        video.srcObject = stream
+        video.play()
       })
     })
     
