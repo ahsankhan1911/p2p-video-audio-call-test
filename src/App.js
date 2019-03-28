@@ -5,6 +5,7 @@ var getUserMedia = require('getusermedia')
 class App extends Component {
 
   componentDidMount () {
+    
     getUserMedia({ video: true, audio: true }, function (err, stream) {
       if (err) return console.error(err)
     console.log("User media stream >>" , stream)
@@ -14,7 +15,7 @@ class App extends Component {
         trickle: false,
         stream: stream
       })
-    
+
       peer.on('signal', function (data) {
         console.log("SIGNALS -------------> ",data)
         document.getElementById('yourId').value = JSON.stringify(data)
